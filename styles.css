@@ -4,8 +4,8 @@
 /* Custom properties */
 :root {
   --clr-white: #fff;
-  --light-color: rgb(216, 116, 116);
-  --light-color-alt: #afb6cd;
+  --light-color: #4fcf70;
+  --light-color-alt: rgb(21,149,231);
   --primary-background-color: #040b21;
   --secondary-background-color: #172650;
   --hover-light-color: var(--light-color);
@@ -180,6 +180,10 @@ body.light-theme {
   align-items: center;
   justify-content: space-between;
   padding-block: 1.5rem;
+}
+
+.icon-box{
+    margin-top: -20px;
 }
 
 .logo {

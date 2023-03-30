@@ -4,8 +4,8 @@
 /* Custom properties */
 :root {
   --clr-white: #fff;
-  --light-color: #4fcf70;
-  --light-color-alt: rgb(21,149,231);
+  --light-color: #ffc300;
+  --light-color-alt: rgb(21, 149, 231);
   --primary-background-color: #040b21;
   --secondary-background-color: #172650;
   --hover-light-color: var(--light-color);
@@ -34,7 +34,7 @@
 }
 
 .loadbody {
-  background: #3f485b;
+  background: #0047ab;
   display: flex;
   align-items: center;
   height: 90%;
@@ -179,15 +179,22 @@ body.light-theme {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1.5rem;
+  padding-block: -2.5rem;
 }
 
-.icon-box{
-    margin-top: -20px;
+.logobox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-box {
+  margin-top: -20px;
 }
 
 .logo {
-  font-size: var(--font-size-md);
+  margin-left: -25px;
   color: var(--light-color);
 }
 

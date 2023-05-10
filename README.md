@@ -1,2 +1,0 @@
-# kosafrique
-online shopping cart

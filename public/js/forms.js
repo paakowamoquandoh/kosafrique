@@ -86,6 +86,6 @@ const processData = (data) => {
     showFormError(data.alert);
   } else if (data.name) {
     sessionStorage.user = JSON.stringify(data);
-    location.replace("/public/");
+    location.replace("/public");
   }
 };

@@ -177,32 +177,33 @@ const highest = async () => {
 class Products {
   async getProducts() {
     try {
-      let result = await fetch(
-        "https://kosafrique-backend-production.up.railway.app/store/products"
-      );
+      let result = await fetch("products.json");
       let data = await result.json();
       let products = data.items;
       products = products.map((item) => {
         const {
-          id,
           title,
-          subtitle,
-          external_id,
+          price,
           description,
-          image,
-          tags,
-          collection,
-        } = item.products;
+          category,
+          brief,
+          image1,
+          image2,
+          image3,
+        } = item.fields;
+        const { id } = item.sys;
+        const image = item.fields.image.fields.file.url;
         return {
+          category,
           title,
-          subtitle,
+          price,
           description,
           id,
           image,
-          external_id,
-          description,
-          tags,
-          collection,
+          brief,
+          image1,
+          image2,
+          image3,
         };
       });
       return products;
@@ -430,6 +431,14 @@ class UI {
       // filter products by category (women only)
       sortedProducts = products.filter(
         (product) => product.category === "women"
+      );
+    } else if (sortBy === "men") {
+      // filter products by category (women only)
+      sortedProducts = products.filter((product) => product.category === "men");
+    } else if (sortBy === "children") {
+      // filter products by category (women only)
+      sortedProducts = products.filter(
+        (product) => product.category === "children" || "all"
       );
     }
     this.loadAllproducts(sortedProducts);

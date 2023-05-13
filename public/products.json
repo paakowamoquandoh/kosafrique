@@ -4,6 +4,9 @@
       "sys": { "id": "clothes" },
       "fields": {
         "category": "women",
+        "image1": "./img/clothes/8.jpg",
+        "image2": "./img/clothes/c2.jpg",
+        "image3": "./img/clothes/c4.png",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
         "title": "African Print Dress",
         "description": "Women Clothing",
@@ -23,6 +26,9 @@
       "sys": { "id": "accessories" },
       "fields": {
         "category": "men",
+        "image1": "./img/accessories/acc3.jpg",
+        "image2": "./img/accessories/acc4.jpg",
+        "image3": "./img/accessories/ac1.jpg",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
         "title": "Ankara Accessories",
         "description": "African Bag with Accessories",
@@ -103,6 +109,9 @@
       "sys": { "id": "clothes" },
       "fields": {
         "category": "men",
+        "image1": "./img/clothes/8.jpg",
+        "image2": "./img/clothes/c2.jpg",
+        "image3": "./img/clothes/c4.png",
         "title": "African Print Dress",
         "description": "Women Clothing",
         "sizeXsmall": "xs",
@@ -122,6 +131,9 @@
       "sys": { "id": "accessories" },
       "fields": {
         "category": "women",
+        "image1": "./img/accessories/acc3.jpg",
+        "image2": "./img/accessories/acc4.jpg",
+        "image3": "./img/accessories/ac1.jpg",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
         "title": "Ankara Accessories",
         "description": "African Bag with Accessories",
@@ -202,6 +214,9 @@
       "sys": { "id": "clothes" },
       "fields": {
         "category": "children",
+        "image1": "./img/clothes/8.jpg",
+        "image2": "./img/clothes/c2.jpg",
+        "image3": "./img/clothes/c4.png",
         "title": "African Print Dress",
         "description": "Women Clothing",
         "sizeXsmall": "xs",
@@ -221,6 +236,9 @@
       "sys": { "id": "accessories" },
       "fields": {
         "category": "women",
+        "image1": "./img/accessories/acc3.jpg",
+        "image2": "./img/accessories/acc4.jpg",
+        "image3": "./img/accessories/ac1.jpg",
         "title": "Ankara Accessories",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
         "description": "African Bag with Accessories",
@@ -288,6 +306,9 @@
       "sys": { "id": "clothes" },
       "fields": {
         "category": "men",
+        "image1": "./img/clothes/8.jpg",
+        "image2": "./img/clothes/c2.jpg",
+        "image3": "./img/clothes/c4.png",
         "title": "African Print Dress",
         "description": "Women Clothing",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
@@ -320,6 +341,9 @@
       "sys": { "id": "accessories" },
       "fields": {
         "category": "women",
+        "image1": "./img/accessories/acc3.jpg",
+        "image2": "./img/accessories/acc4.jpg",
+        "image3": "./img/accessories/ac1.jpg",
         "title": "Ankara Accessories",
         "description": "African Bag with Accessories",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
@@ -387,6 +411,9 @@
       "sys": { "id": "clothes" },
       "fields": {
         "category": "women",
+        "image1": "./img/clothes/8.jpg",
+        "image2": "./img/clothes/c2.jpg",
+        "image3": "./img/clothes/c4.png",
         "title": "African Print Dress",
         "description": "Women Clothing",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
@@ -406,6 +433,9 @@
       "sys": { "id": "accessories" },
       "fields": {
         "category": "men",
+        "image1": "./img/accessories/acc3.jpg",
+        "image2": "./img/accessories/acc4.jpg",
+        "image3": "./img/accessories/ac1.jpg",
         "title": "Ankara Accessories",
         "description": "African Bag with Accessories",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",

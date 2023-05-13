@@ -68,8 +68,17 @@ const sendData = (path, data) => {
     headers: new Headers({ "Content-Type": "application/json" }),
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
-    .then((data) => processData(data));
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return res.json();
+    })
+    .then((data) => processData(data))
+    .catch((error) => {
+      console.error("Error:", error);
+      showFormError("An error occurred");
+    });
 };
 
 const processData = (data) => {

@@ -190,6 +190,7 @@ class Products {
           image1,
           image2,
           image3,
+          type,
         } = item.fields;
         const { id } = item.sys;
         const image = item.fields.image.fields.file.url;
@@ -204,6 +205,7 @@ class Products {
           image1,
           image2,
           image3,
+          type,
         };
       });
       return products;
@@ -386,10 +388,10 @@ class UI {
     });
   }
 
-  filterProducts(products, sortBy, category, id) {
+  filterProducts(products, sortBy, category, type) {
     let sortedProducts = [];
-    if (id) {
-      sortedProducts = products.filter((product) => product.id.includes(id));
+    if (type) {
+      sortedProducts = products.filter((product) => product.id.includes(type));
     } else if (category) {
       sortedProducts = products.filter(
         (product) => product.category === category
@@ -414,19 +416,19 @@ class UI {
       });
     } else if (sortBy === "clothes") {
       // filter products by category (clothes only)
-      sortedProducts = products.filter((item) => item.id === "clothes");
+      sortedProducts = products.filter((item) => item.type === "clothes");
     } else if (sortBy === "accessories") {
       // filter products by category (accessories only)
-      sortedProducts = products.filter((item) => item.id === "accessories");
+      sortedProducts = products.filter((item) => item.type === "accessories");
     } else if (sortBy === "sportwear") {
       // filter products by category (sportwear only)
-      sortedProducts = products.filter((item) => item.id === "sportwear");
+      sortedProducts = products.filter((item) => item.type === "sportwear");
     } else if (sortBy === "lingerie") {
       // filter products by category (lingerie only)
-      sortedProducts = products.filter((item) => item.id === "lingerie");
+      sortedProducts = products.filter((item) => item.type === "lingerie");
     } else if (sortBy === "pillow") {
       // filter products by category (pillow only)
-      sortedProducts = products.filter((item) => item.id === "pillow");
+      sortedProducts = products.filter((item) => item.type === "pillow");
     } else if (sortBy === "women") {
       // filter products by category (women only)
       sortedProducts = products.filter(

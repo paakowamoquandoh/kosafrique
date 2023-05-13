@@ -127,11 +127,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-//add product
-app.get("/addProduct", (req, res) => {
-  res.sendFile("addProduct.html", { root: "public" });
-});
-
 //aboutus
 app.get("/aboutus", (req, res) => {
   res.sendFile("aboutus.html", { root: "public" });
@@ -140,56 +135,6 @@ app.get("/aboutus", (req, res) => {
 //checkout
 app.get("/checkout", (req, res) => {
   res.sendFile("checkout.html", { root: "public" });
-});
-
-app.post("/order", (req, res) => {
-  const { order, email, add } = req.body;
-
-  const mailOption = {
-    from: "valid sender email id",
-    to: email,
-    subject: "Order Placed successfully",
-    html: `
-    HTML code here
-    `,
-  };
-
-  let docName = email + Math.floor(Math.random() * 1237192874198124);
-  db.collection("order")
-    .doc(docName)
-    .set(req.body)
-    .then((data) => {
-      res.json("done");
-    });
-});
-
-//stripe
-let stripeGateway = stripe(process.env.stripe_key);
-
-let DOMAIN = process.env.DOMAIN;
-
-app.post("/stripe-checkout", async (req, res) => {
-  const session = await stripeGateway.checkout.sessions.create({
-    payment_method_types: ["card"],
-    mode: "payment",
-    success_url: `${DOMAIN}/success`,
-    cancel_url: `${DOMAIN}/checkout`,
-    line_items: req.body.items.map((item) => {
-      return {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: item.title,
-            description: item.brief,
-            images: [item.image],
-          },
-          unit_amount: item.price * 100,
-        },
-        quantity: item.item,
-      };
-    }),
-  });
-  res.json(session.url);
 });
 
 //404 error

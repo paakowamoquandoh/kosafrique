@@ -177,32 +177,32 @@ const highest = async () => {
 class Products {
   async getProducts() {
     try {
-      let result = await fetch("products.json");
+      let result = await fetch(
+        "https://kosafrique-backend-production.up.railway.app/store/products"
+      );
       let data = await result.json();
       let products = data.items;
       products = products.map((item) => {
         const {
+          id,
           title,
-          price,
+          subtitle,
+          external_id,
           description,
-          category,
-          brief,
-          image1,
-          image2,
-          image3,
-        } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
+          image,
+          tags,
+          collection,
+        } = item.products;
         return {
           title,
-          price,
+          subtitle,
           description,
           id,
           image,
-          brief,
-          image1,
-          image2,
-          image3,
+          external_id,
+          description,
+          tags,
+          collection,
         };
       });
       return products;

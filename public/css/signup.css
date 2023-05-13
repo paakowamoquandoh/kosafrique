@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,700;0,900;1,200;1,300;1,400;1,700;1,800;1,900&display=swap");
 /* Custom properties */
 :root {
   --dark-color: black;
@@ -32,6 +32,13 @@
   --margin-md: 3rem;
   --item-min-height-sm: 20rem;
   --item-min-height-md: 30rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
 }
 
 body {

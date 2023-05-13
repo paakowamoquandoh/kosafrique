@@ -401,7 +401,7 @@
       }
     },
     {
-      "sys": { "id": "sportwear5" },
+      "sys": { "id": "sportwear4" },
       "fields": {
         "category": "children",
         "type": "sportwear",
@@ -487,7 +487,7 @@
       }
     },
     {
-      "sys": { "id": "accessories6" },
+      "sys": { "id": "accessories5" },
       "fields": {
         "category": "men",
         "type": "accessories",
@@ -521,7 +521,7 @@
       }
     },
     {
-      "sys": { "id": "sportwear6" },
+      "sys": { "id": "sportwear5" },
       "fields": {
         "category": "children",
         "type": "sportwear",
@@ -544,7 +544,7 @@
       }
     },
     {
-      "sys": { "id": "lingerie5" },
+      "sys": { "id": "lingerie6" },
       "fields": {
         "category": "women",
         "type": "lingerie",
@@ -571,9 +571,9 @@
       "fields": {
         "category": "men",
         "type": "clothes",
-        "image1": "./img/clothes/c19.jpg",
-        "image2": "./img/clothes/c13.jpg",
-        "image3": "./img/clothes/c12.jpg",
+        "image1": "./img/clothes/cc1.jpg",
+        "image2": "./img/clothes/cc2.jpg",
+        "image3": "./img/clothes/cc3.jpg",
         "title": "African Print Dress",
         "description": "Dress Clothing",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
@@ -585,7 +585,24 @@
         "sizeXxlarge": "xxl",
         "price": 181.25,
         "image": {
-          "fields": { "file": { "url": "./img/clothes/c16.jpg" } }
+          "fields": { "file": { "url": "./img/clothes/ccc.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "accessories6" },
+      "fields": {
+        "category": "men",
+        "type": "accessories",
+        "image1": "./img/accessories/9.jpg",
+        "image2": "./img/accessories/acc6.jpg",
+        "image3": "./img/accessories/ac1.jpg",
+        "title": "Ankara Accessories",
+        "description": "African Bag with Accessories",
+        "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
+        "price": 34.33,
+        "image": {
+          "fields": { "file": { "url": "./img/accessories/2.jpg" } }
         }
       }
     }

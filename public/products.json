@@ -49,6 +49,9 @@
       "sys": { "id": "sportwear" },
       "fields": {
         "category": "children",
+        "image1": "./img/sportswear/sp4.jpeg",
+        "image2": "./img/sportswear/sp3.jpeg",
+        "image3": "./img/sportswear/sp6.jpeg",
         "title": "Ankara Active Wear",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",
         "description": "African Print Active Sportwear",
@@ -145,6 +148,9 @@
       "sys": { "id": "sportwear" },
       "fields": {
         "category": "children",
+        "image1": "./img/sportswear/sp4.jpeg",
+        "image2": "./img/sportswear/sp3.jpeg",
+        "image3": "./img/sportswear/sp6.jpeg",
         "title": "Ankara Active Wear",
         "description": "African Print Active Sportwear",
         "sizeXsmall": "xs",
@@ -228,6 +234,9 @@
       "sys": { "id": "sportwear" },
       "fields": {
         "category": "men",
+        "image1": "./img/sportswear/sp4.jpeg",
+        "image2": "./img/sportswear/sp3.jpeg",
+        "image3": "./img/sportswear/sp6.jpeg",
         "title": "Ankara Active Wear",
         "description": "African Print Active Sportwear",
         "sizeXsmall": "xs",
@@ -324,6 +333,9 @@
       "sys": { "id": "sportwear" },
       "fields": {
         "category": "children",
+        "image1": "./img/sportswear/sp4.jpeg",
+        "image2": "./img/sportswear/sp3.jpeg",
+        "image3": "./img/sportswear/sp6.jpeg",
         "title": "Ankara Active Wear",
         "description": "African Print Active Sportwear",
         "sizeXsmall": "xs",
@@ -420,6 +432,9 @@
       "sys": { "id": "sportwear" },
       "fields": {
         "category": "children",
+        "image1": "./img/sportswear/sp4.jpeg",
+        "image2": "./img/sportswear/sp3.jpeg",
+        "image3": "./img/sportswear/sp6.jpeg",
         "title": "Ankara Active Wear",
         "description": "African Print Active Sportwear",
         "brief": "lorem ipsum dolor aksd matic sderrfi dd lorem ipsum dolor",

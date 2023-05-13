@@ -263,13 +263,13 @@ class UI {
     itemPage.classList.add("productInfo");
 
     itemPage.innerHTML = `
-      <div class="imageSlider">
+      <div class="imageSlider" style="background-image: url(${product.image});">
         <h4 class="selectImage">Select image file below to view</h4>
         <div class="productImages">
           <img src=${product.image} alt="">
-          <img src=${product.image} alt="">         
-          <img src=${product.image} alt="">
-          <img src=${product.image} alt="">
+          <img src=${product.image1} alt="">         
+          <img src=${product.image2} alt="">
+          <img src=${product.image3} alt="">
         </div>
       </div>
       <div class="ItemDetails">
@@ -279,10 +279,10 @@ class UI {
         <span class="itemPrice">$${product.price}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">
-          <img src="./img/star-filled.png" class="star" alt="">
-          <img src="./img/star-filled.png" class="star" alt="">
-          <img src="./img/star-filled.png" class="star" alt="">
-          <img src="./img/star-filled.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
           <img src="./img/star.png" class="star" alt="">
         </div>
         <p class="subHeading">Select Size</p>
@@ -340,9 +340,9 @@ class UI {
       star.addEventListener("click", () => {
         for (let i = 0; i < 5; i++) {
           if (i <= index) {
-            ratingsInput[i].src = `/public/img/star-filled.png`;
+            ratingsInput[i].src = `/img/star-filled.png`;
           } else {
-            ratingsInput[i].src = `/public/img/star.png`;
+            ratingsInput[i].src = `/img/star.png`;
           }
         }
       });

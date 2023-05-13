@@ -1114,6 +1114,18 @@ button.white {
     margin: 0;
     margin-top: 0spx;
   }
+  .checkCart {
+    width: 80%;
+  }
+
+  .miniCart h2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -8px;
+    margin-bottom: -18px;
+    font-size: 28px;
+  }
 }
 
 @media (max-device-width: 380px) {

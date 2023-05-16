@@ -42,10 +42,6 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "public" });
 });
 
-app.listen(2003, () => {
-  console.log("listening on port 2003");
-});
-
 //signup
 app.get("/signup", (req, res) => {
   res.sendFile("signup.html", { root: "public" });

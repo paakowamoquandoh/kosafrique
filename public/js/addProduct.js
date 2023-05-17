@@ -301,9 +301,7 @@ class UI {
     itemPage.classList.add("productInfo");
 
     itemPage.innerHTML = `
-      <div class="imageSlider" style="background-image: url(${product.thumbnail});">
-        <h4 class="selectImage">Select image file below to view</h4>
-        <div class="productImages">
+      <div class="imageSlider" style="background-image: url(${product.thumbnail});"><div class="productImages">
           <img src=${product.thumbnail} alt="">
           <img src=${product.image1} alt="">         
           <img src=${product.image2} alt="">

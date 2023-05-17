@@ -134,6 +134,7 @@ section .productsBox .mainProArea .itemCard {
   text-decoration: none;
   transition: 0.3s linear;
   padding: 5px 10px;
+  text-transform: capitalize;
 }
 
 section .productsBox .mainProArea .itemCard:hover {

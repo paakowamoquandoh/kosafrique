@@ -177,47 +177,33 @@ const highest = async () => {
 class Products {
   async getProducts() {
     try {
-      //   try {
-      //     const result = await fetch("https://jsonplaceholder.typicode.com/photos");
-      //     const data = await result.json();
-      //     console.log(data);
-      //     const products = data.map((item) => {
-      //       const { id, albumId, title, url } = item;
-      //       return { title, price: albumId, description: title, id, image: url };
-      //     });
-      //     return products;
-      //   } catch (error) {
-      //     console.log(error);
-      //   }}
-      let result = await fetch("products.json");
-      let data = await result.json();
-      let products = data.items;
-      products = products.map((item) => {
+      const result = await fetch(
+        "https://kosafrique-backend-production.up.railway.app/store/products"
+      );
+      const data = await result.json();
+      console.log(data);
+      const products = data.products.map((item) => {
         const {
-          title,
-          price,
-          description,
-          category,
-          brief,
-          image1,
-          image2,
-          image3,
-          type,
-        } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
-        return {
-          category,
-          title,
-          price,
-          description,
           id,
-          image,
-          brief,
+          title,
+          subtitle,
+          description,
+          handle,
+          thumbnail,
+          material,
+          images: [{ url: image1 }, { url: image2 }, { url: image3 }],
+        } = item;
+        return {
+          id,
+          title,
+          subtitle,
+          description,
+          handle,
+          thumbnail,
+          material,
           image1,
           image2,
           image3,
-          type,
         };
       });
       return products;
@@ -225,6 +211,42 @@ class Products {
       console.log(error);
     }
   }
+  // try {
+  //   let result = await fetch("products.json");
+  //   let data = await result.json();
+  //   let products = data.items;
+  //   products = products.map((item) => {
+  //     const {
+  //       title,
+  //       price,
+  //       description,
+  //       category,
+  //       brief,
+  //       image1,
+  //       image2,
+  //       image3,
+  //       type,
+  //     } = item.fields;
+  //     const { id } = item.sys;
+  //     const image = item.fields.image.fields.file.url;
+  //     return {
+  //       category,
+  //       title,
+  //       price,
+  //       description,
+  //       id,
+  //       image,
+  //       brief,
+  //       image1,
+  //       image2,
+  //       image3,
+  //       type,
+  //     };
+  //   });
+  //   return products;
+  // } catch (error) {
+  //   console.log(error);
+  // }
 }
 
 // display products implementation
@@ -234,13 +256,15 @@ class UI {
     products.forEach((product) => {
       itemResult += `
         <!-- single Product -->
-        <a class="itemCard" data-id="${product.id}">
-          <img class="itemImage" src=${product.image} alt="">
-          <h5 class="cardTitle" title="African Print Dress">${product.title}</h5>
-          <p>${product.description}</p>
-          <div class="itemPrice">
-              <h5>$${product.price}</h5>
-          </div>
+        <a class="itemCard" >
+         <div id="itemCard" data-id="${product.id}">
+         <img class="itemImage" src=${product.thumbnail} alt="">
+         <h5 class="cardTitle" title="African Print Dress">${product.title}</h5>
+         <p>African Made ${product.subtitle}</p>
+         <div class="itemPrice">
+             <h5>$${product.material}</h5>
+         </div>
+         </div>
           <div class="colorTag">
           <div class="stars">
           <ion-icon name="star"></ion-icon>
@@ -258,7 +282,7 @@ class UI {
     });
 
     // add event listener to each product item
-    const productCards = document.querySelectorAll(".itemCard");
+    const productCards = document.querySelectorAll("#itemCard");
     productCards.forEach((card) => {
       card.addEventListener("click", () => {
         const productId = card.dataset.id;
@@ -277,10 +301,10 @@ class UI {
     itemPage.classList.add("productInfo");
 
     itemPage.innerHTML = `
-      <div class="imageSlider" style="background-image: url(${product.image});">
+      <div class="imageSlider" style="background-image: url(${product.thumbnail});">
         <h4 class="selectImage">Select image file below to view</h4>
         <div class="productImages">
-          <img src=${product.image} alt="">
+          <img src=${product.thumbnail} alt="">
           <img src=${product.image1} alt="">         
           <img src=${product.image2} alt="">
           <img src=${product.image3} alt="">
@@ -288,9 +312,9 @@ class UI {
       </div>
       <div class="ItemDetails">
         <h2 style="display: none;" class="productBrand">${product.title}</h2>
-        <h4 class="itemDescription"><b>${product.description}</b></h4>
-        <p class="itemDescription">${product.brief}</p>
-        <span class="itemPrice">$${product.price}</span>
+        <h4 class="itemDescription"><b>African Made ${product.subtitle}</b></h4>
+        <p class="itemDescription">${product.description}</p>
+        <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">
           <img src="../img/star.png" class="star" alt="">
@@ -400,14 +424,14 @@ class UI {
     });
   }
 
-  filterProducts(products, sortBy, category, type) {
+  filterProducts(products, sortBy, handle, subtitle) {
     let sortedProducts = [];
-    if (type) {
-      sortedProducts = products.filter((product) => product.id.includes(type));
-    } else if (category) {
-      sortedProducts = products.filter(
-        (product) => product.category === category
+    if (subtitle) {
+      sortedProducts = products.filter((product) =>
+        product.id.includes(subtitle)
       );
+    } else if (handle) {
+      sortedProducts = products.filter((product) => product.handle === handle);
     } else {
       sortedProducts = [...products];
     }
@@ -427,32 +451,32 @@ class UI {
         return b.price - a.price;
       });
     } else if (sortBy === "clothes") {
-      // filter products by category (clothes only)
-      sortedProducts = products.filter((item) => item.type === "clothes");
+      // filter products by handle (clothes only)
+      sortedProducts = products.filter((item) => item.subtitle === "clothes");
     } else if (sortBy === "accessories") {
-      // filter products by category (accessories only)
-      sortedProducts = products.filter((item) => item.type === "accessories");
-    } else if (sortBy === "sportwear") {
-      // filter products by category (sportwear only)
-      sortedProducts = products.filter((item) => item.type === "sportwear");
-    } else if (sortBy === "lingerie") {
-      // filter products by category (lingerie only)
-      sortedProducts = products.filter((item) => item.type === "lingerie");
-    } else if (sortBy === "pillow") {
-      // filter products by category (pillow only)
-      sortedProducts = products.filter((item) => item.type === "pillow");
-    } else if (sortBy === "women") {
-      // filter products by category (women only)
+      // filter products by handle (accessories only)
       sortedProducts = products.filter(
-        (product) => product.category === "women"
+        (item) => item.subtitle === "accessories"
       );
+    } else if (sortBy === "sportwear") {
+      // filter products by handle (sportwear only)
+      sortedProducts = products.filter((item) => item.subtitle === "sportwear");
+    } else if (sortBy === "lingerie") {
+      // filter products by handle (lingerie only)
+      sortedProducts = products.filter((item) => item.subtitle === "lingerie");
+    } else if (sortBy === "pillow") {
+      // filter products by handle (pillow only)
+      sortedProducts = products.filter((item) => item.subtitle === "pillow");
+    } else if (sortBy === "women") {
+      // filter products by handle (women only)
+      sortedProducts = products.filter((product) => product.handle === "women");
     } else if (sortBy === "men") {
-      // filter products by category (women only)
-      sortedProducts = products.filter((product) => product.category === "men");
+      // filter products by handle (women only)
+      sortedProducts = products.filter((product) => product.handle === "men");
     } else if (sortBy === "children") {
-      // filter products by category (women only)
+      // filter products by handle (women only)
       sortedProducts = products.filter(
-        (product) => product.category === "children" || "all"
+        (product) => product.handle === "children" || "all"
       );
     }
     this.loadAllproducts(sortedProducts);
@@ -498,7 +522,7 @@ class UI {
     let itemTotal = 0;
     let itemsTotal = 0;
     cartBasket.map((item) => {
-      itemTotal += item.price * item.amount;
+      itemTotal += item.material * item.amount;
       itemsTotal += item.amount;
     });
     cartTotal.innerText = parseFloat(itemTotal.toFixed(2));
@@ -509,10 +533,10 @@ class UI {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("cartItem");
     itemDiv.innerHTML = `
-     <img src=${item.image} alt="">          
+     <img src=${item.thumbnail} alt="">          
      <div>
       <h4>${item.title}</h4>
-      <h5>$${item.price}</h5>
+      <h5>$${item.material}</h5>
         <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
         <div class="stars">
               <ion-icon name="star"></ion-icon>

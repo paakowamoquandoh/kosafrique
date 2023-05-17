@@ -22,34 +22,35 @@ function displayCartOverlay() {
   cartArea.classList.toggle("showCart");
 }
 
-//...
+//https://kosafrique-backend-production.up.railway.app/store/products...
 // display products implementation
 class Products {
   async getProducts() {
     try {
-      let result = await fetch("products.json");
-      let data = await result.json();
-      let products = data.items;
-      products = products.map((item) => {
+      const result = await fetch(
+        "https://kosafrique-backend-production.up.railway.app/store/products"
+      );
+      const data = await result.json();
+      console.log(data);
+      const products = data.products.map((item) => {
         const {
-          title,
-          price,
-          description,
-          category,
-          brief,
-          image1,
-          image2,
-          image3,
-        } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
-        return {
-          title,
-          price,
-          description,
           id,
-          image,
-          brief,
+          title,
+          subtitle,
+          description,
+          handle,
+          thumbnail,
+          material,
+          images: [{ url: image1 }, { url: image2 }, { url: image3 }],
+        } = item;
+        return {
+          id,
+          title,
+          subtitle,
+          description,
+          handle,
+          thumbnail,
+          material,
           image1,
           image2,
           image3,
@@ -60,96 +61,79 @@ class Products {
       console.log(error);
     }
   }
+  // try {
+  //   let result = await fetch("products.json");
+  //   let data = await result.json();
+  //   let products = data.items;
+  //   products = products.map((item) => {
+  //     const {
+  //       title,
+  //       price,
+  //       description,
+  //       category,
+  //       brief,
+  //       image1,
+  //       image2,
+  //       image3,
+  //       type,
+  //     } = item.fields;
+  //     const { id } = item.sys;
+  //     const image = item.fields.image.fields.file.url;
+  //     return {
+  //       category,
+  //       title,
+  //       price,
+  //       description,
+  //       id,
+  //       image,
+  //       brief,
+  //       image1,
+  //       image2,
+  //       image3,
+  //       type,
+  //     };
+  //   });
+  //   return products;
+  // } catch (error) {
+  //   console.log(error);
+  // }
 }
 
 // display products implementation
 class UI {
-  filterProducts(products, sortBy, category) {
-    let sortedProducts = [];
-    if (category) {
-      sortedProducts = products.filter((product) =>
-        product.id.includes(category)
-      );
-    } else {
-      sortedProducts = [...products];
-    }
-    if (sortBy === "newest") {
-      // sort by date added (most recent first)
-      sortedProducts = sortedProducts.sort((a, b) => {
-        return new Date(b.dateAdded) - new Date(a.dateAdded);
-      });
-    } else if (sortBy === "lowest") {
-      // sort by price (lowest first)
-      sortedProducts = sortedProducts.sort((a, b) => {
-        return a.price - b.price;
-      });
-    } else if (sortBy === "highest") {
-      // sort by price (highest first)
-      sortedProducts = sortedProducts.sort((a, b) => {
-        return b.price - a.price;
-      });
-    } else if (sortBy === "clothes") {
-      // filter products by category (clothes only)
-      sortedProducts = products.filter((item) => item.id === "clothes");
-    } else if (sortBy === "accessories") {
-      // filter products by category (accessories only)
-      sortedProducts = products.filter((item) => item.id === "accessories");
-    } else if (sortBy === "sportwear") {
-      // filter products by category (sportwear only)
-      sortedProducts = products.filter((item) => item.id === "sportwear");
-    } else if (sortBy === "lingerie") {
-      // filter products by category (lingerie only)
-      sortedProducts = products.filter((item) => item.id === "lingerie");
-    } else if (sortBy === "pillow") {
-      // filter products by category (pillow only)
-      sortedProducts = products.filter((item) => item.id === "pillow");
-    } else if (sortBy === "women") {
-      // filter products by category (women only)
-      sortedProducts = products.filter((item) => item.category === "women");
-    }
-    this.loadAllproducts(sortedProducts);
+  loadAllproducts(products) {
+    //
   }
 
   displayProductDetails(product) {
-    console.log(`Product ${product.image} details displayed`);
     const modalContainer = document.querySelector(".modal-container");
     const closeModalBtn = document.querySelector("#close-modal-btn");
-
-    modalContainer.classList.add("show-modal");
-
-    closeModalBtn.addEventListener("click", () => {
-      modalContainer.classList.remove("show-modal");
-      modalContainer.removeChild(itemPage);
-    });
-
-    console.log(product);
-    const { id, title, description, price, image, brief } = product;
 
     let itemPage = document.createElement("div");
     itemPage.classList.add("productInfo");
 
     itemPage.innerHTML = `
-      <div class="imageSlider">
+      <div class="imageSlider" style="background-image: url(${product.thumbnail});">
         <h4 class="selectImage">Select image file below to view</h4>
         <div class="productImages">
-          <img src=${product.image} alt="">
-          <img src=${product.image} alt="">         
-          <img src=${product.image} alt="">
-          <img src=${product.image} alt="">
+          <img src=${product.thumbnail} alt="">
+          <img src=${product.image1} alt="">         
+          <img src=${product.image2} alt="">
+          <img src=${product.image3} alt="">
         </div>
       </div>
       <div class="ItemDetails">
-        <h2 class="productBrand">${product.title}</h2>
-        <h4 class="itemDescription"><b>${product.description}</b></h4>
-        <p class="itemDescription">${product.brief}</p>
-        <span class="itemPrice">$${product.price}</span>
+        <h2 style="display: none;" class="productBrand">${product.title}</h2>
+        <h4 class="itemDescription"><b>African Made ${product.subtitle}</b></h4>
+        <p class="itemDescription">${product.description}</p>
+        <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">
-          <img src="./public/img/star-filled.png" class="star" alt="">
-          <img src="./public/img/star-filled.png" class="star" alt="">
-          <img src="./public/img/star-filled.png" class="star" alt="">
-          <img src="./public/img/star-filled.png" class="star" alt="">
-          <img src="./public/img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="../img/star.png" class="star" alt="">
+          <img src="./img/star.png" class="star" alt="">
         </div>
         <p class="subHeading">Select Size</p>
         <input type="radio" name="size" value="s" hidden id="sSize">
@@ -165,8 +149,12 @@ class UI {
         <button class="btn cartButton" data-id=${product.id}>Add to Cart</button>
       </div>
     `;
-
     modalContainer.appendChild(itemPage);
+    modalContainer.classList.add("show-modal");
+    closeModalBtn.addEventListener("click", () => {
+      modalContainer.classList.remove("show-modal");
+      modalContainer.removeChild(itemPage);
+    });
 
     // Append the product page to the new window
     const imagesOfItems = document.querySelectorAll(".productImages img");
@@ -202,9 +190,9 @@ class UI {
       star.addEventListener("click", () => {
         for (let i = 0; i < 5; i++) {
           if (i <= index) {
-            ratingsInput[i].src = `/public/img/star-filled.png`;
+            ratingsInput[i].src = `/img/star-filled.png`;
           } else {
-            ratingsInput[i].src = `/public/img/star.png`;
+            ratingsInput[i].src = `/img/star.png`;
           }
         }
       });
@@ -247,6 +235,65 @@ class UI {
       });
     });
   }
+
+  filterProducts(products, sortBy, handle, subtitle) {
+    let sortedProducts = [];
+    if (subtitle) {
+      sortedProducts = products.filter((product) =>
+        product.id.includes(subtitle)
+      );
+    } else if (handle) {
+      sortedProducts = products.filter((product) => product.handle === handle);
+    } else {
+      sortedProducts = [...products];
+    }
+    if (sortBy === "newest") {
+      // sort by date added (most recent first)
+      sortedProducts = sortedProducts.sort((a, b) => {
+        return new Date(b.dateAdded) - new Date(a.dateAdded);
+      });
+    } else if (sortBy === "lowest") {
+      // sort by price (lowest first)
+      sortedProducts = sortedProducts.sort((a, b) => {
+        return a.price - b.price;
+      });
+    } else if (sortBy === "highest") {
+      // sort by price (highest first)
+      sortedProducts = sortedProducts.sort((a, b) => {
+        return b.price - a.price;
+      });
+    } else if (sortBy === "clothes") {
+      // filter products by handle (clothes only)
+      sortedProducts = products.filter((item) => item.subtitle === "clothes");
+    } else if (sortBy === "accessories") {
+      // filter products by handle (accessories only)
+      sortedProducts = products.filter(
+        (item) => item.subtitle === "accessories"
+      );
+    } else if (sortBy === "sportwear") {
+      // filter products by handle (sportwear only)
+      sortedProducts = products.filter((item) => item.subtitle === "sportwear");
+    } else if (sortBy === "lingerie") {
+      // filter products by handle (lingerie only)
+      sortedProducts = products.filter((item) => item.subtitle === "lingerie");
+    } else if (sortBy === "pillow") {
+      // filter products by handle (pillow only)
+      sortedProducts = products.filter((item) => item.subtitle === "pillow");
+    } else if (sortBy === "women") {
+      // filter products by handle (women only)
+      sortedProducts = products.filter((product) => product.handle === "women");
+    } else if (sortBy === "men") {
+      // filter products by handle (women only)
+      sortedProducts = products.filter((product) => product.handle === "men");
+    } else if (sortBy === "children") {
+      // filter products by handle (women only)
+      sortedProducts = products.filter(
+        (product) => product.handle === "children" || "all"
+      );
+    }
+    this.loadAllproducts(sortedProducts);
+  }
+
   getAddToCartBtns() {
     const addToCartButtons = [...document.querySelectorAll(".proCart")];
     addButtons = addToCartButtons;
@@ -287,7 +334,7 @@ class UI {
     let itemTotal = 0;
     let itemsTotal = 0;
     cartBasket.map((item) => {
-      itemTotal += item.price * item.amount;
+      itemTotal += item.material * item.amount;
       itemsTotal += item.amount;
     });
     cartTotal.innerText = parseFloat(itemTotal.toFixed(2));
@@ -298,10 +345,10 @@ class UI {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("cartItem");
     itemDiv.innerHTML = `
-     <img src=${item.image} alt="">          
+     <img src=${item.thumbnail} alt="">          
      <div>
       <h4>${item.title}</h4>
-      <h5>$${item.price}</h5>
+      <h5>$${item.material}</h5>
         <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
         <div class="stars">
               <ion-icon name="star"></ion-icon>
@@ -328,7 +375,7 @@ class UI {
     cartBasket = Storage.getItemsFromCart();
     this.setCartItemValues(cartBasket);
     this.populateCart(cartBasket);
-    // closeCartBtn.addEventListener("click", this.hideCart);
+    closeCartBtn.addEventListener("click", this.hideCart);
   }
   populateCart(cartBasket) {
     cartBasket.forEach((item) => this.addCartItemToCart(item));
@@ -392,7 +439,7 @@ class UI {
     Storage.saveCart(cartBasket);
     let button = this.getOneButton(id);
     // button.disabled = false;
-    // button.innerHTML = `Buy`;
+    button.innerHTML = `Buy`;
   }
   getOneButton(id) {
     return addButtons.find((button) => button.dataset.id === id);
@@ -431,6 +478,7 @@ document.addEventListener("DOMContentLoaded", () => {
   products
     .getProducts()
     .then((products) => {
+      ui.loadAllproducts(products);
       Storage.saveCartItems(products);
     })
     .then(() => {

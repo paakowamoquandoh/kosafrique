@@ -177,6 +177,18 @@ const highest = async () => {
 class Products {
   async getProducts() {
     try {
+      //   try {
+      //     const result = await fetch("https://jsonplaceholder.typicode.com/photos");
+      //     const data = await result.json();
+      //     console.log(data);
+      //     const products = data.map((item) => {
+      //       const { id, albumId, title, url } = item;
+      //       return { title, price: albumId, description: title, id, image: url };
+      //     });
+      //     return products;
+      //   } catch (error) {
+      //     console.log(error);
+      //   }}
       let result = await fetch("products.json");
       let data = await result.json();
       let products = data.items;

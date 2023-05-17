@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "production";
+
 import express from "express";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";

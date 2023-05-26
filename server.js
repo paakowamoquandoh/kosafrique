@@ -44,6 +44,10 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "public" });
 });
 
+app.listen(4001, () => {
+  console.log("listening on port 4001......");
+});
+
 //signup
 app.get("/signup", (req, res) => {
   res.sendFile("signup.html", { root: "public" });

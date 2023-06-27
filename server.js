@@ -38,15 +38,36 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
+//stripe
+const stripeInstance = stripe(process.env.STRIPE_KEY);
+
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const stripeSession = await stripeInstance.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      success_url: `${process.env.SERVER_URL}/succes.html`,
+      cancel_url: `${process.env.SERVER_URL}/cancel.html`,
+    });
+    res.json({ url: stripeSession.url });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 //routes
 //home
 app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "public" });
 });
 
+<<<<<<< HEAD
+app.listen(2000);
+=======
 app.listen(4001, () => {
   console.log("listening on port 4001......");
 });
+>>>>>>> f786743a010b0207cd6a414ca91a14eb604250e4
 
 //signup
 app.get("/signup", (req, res) => {

@@ -252,9 +252,6 @@ class Products {
 // display products implementation
 class UI {
   loadAllproducts(products) {
-    if (!products) {
-      return; // Return early if products is undefined
-    }
     let itemResult = "";
     products.forEach((product) => {
       itemResult += `

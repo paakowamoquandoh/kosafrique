@@ -384,9 +384,6 @@ class UI {
     cartArea.classList.remove("showCart");
   }
   cartLogic() {
-    ClearCartBtn.addEventListener("click", () => {
-      this.clearCartBasket();
-    });
     // cart functionality
     overlayCartContent.addEventListener("click", (event) => {
       if (event.target.classList.contains("removeItem")) {

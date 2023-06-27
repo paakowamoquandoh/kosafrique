@@ -1,17 +1,31 @@
 window.onload = () => {
   if (!sessionStorage.user) {
-    location.replace("/login");
+    location.replace("../login");
   }
 };
 
 const placeOrder = document.querySelector("#placeOrderBtn");
 placeOrder.addEventListener("click", () => {
   let address = getAddress();
-  let popsy = document.querySelector("#popsy");
-  //send to backend
-  if (address) {
-    alert("moda");
-  }
+  fetch("/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      item: [{ id: 1, quantity: 2 }],
+    }),
+  })
+    .then((res) => {
+      if (res.ok) return res.json();
+      return res.json().then((json) => Promise.reject(json));
+    })
+    .then(({ url }) => {
+      window.location = url;
+    })
+    .catch((e) => {
+      console.error(e.error);
+    });
 });
 
 const getAddress = () => {
@@ -33,11 +47,7 @@ const getAddress = () => {
   ) {
     return showFormError("fill all inputs first");
   } else {
-    let popsy = document.querySelector("#popsy");
-    popsy.classList.add("open");
-    function closePopsy() {
-      popsy.classList.remove("open");
-    }
+    return { address, street, city, state, zipcode, landmark };
   }
 };
 
@@ -45,36 +55,6 @@ const showFormError = (err) => {
   let errorElement = document.querySelector(".error");
   errorElement.innerHTML = err;
   errorElement.classList.add("show");
-};
-
-const userPlace = document.querySelector("#loginArea");
-// const userPlaceMobile = document.querySelector("#userMobile");
-const showOptions = document.querySelector(".loginPopUp");
-const popUpText = document.querySelector(".accountInfo");
-const loginActionBtn = document.querySelector("#userBtn");
-
-userPlace.addEventListener("click", () => {
-  showOptions.classList.toggle("hide");
-});
-
-window.onload = () => {
-  let user = JSON.parse(sessionStorage.user || null);
-  if (user != null) {
-    //already logged in
-    popUpText.innerHTML = `User, <b><i>${user.name}!</i></b>`;
-    loginActionBtn.innerHTML = "log out";
-    loginActionBtn.addEventListener("click", () => {
-      sessionStorage.clear();
-      location.reload();
-    });
-  } else {
-    //user logged out
-    popUpText.innerHTML = "Log in to place order";
-    loginActionBtn.innerHTML = "Log in";
-    loginActionBtn.addEventListener("click", () => {
-      location.href = "/login";
-    });
-  }
 };
 
 const mobileMenu = document.getElementById("mobileMenu");
@@ -105,3 +85,11 @@ if (navMenuClose) {
     logo.classList.add("hide");
   });
 }
+
+// else {
+//   let popsy = document.querySelector("#popsy");
+//   popsy.classList.add("open");
+//   function closePopsy() {
+//     popsy.classList.remove("open");
+//   }
+// }

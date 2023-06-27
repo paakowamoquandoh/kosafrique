@@ -191,7 +191,7 @@ class Products {
           handle,
           thumbnail,
           material,
-          images: [{ url: image1 }, { url: image2 }, { url: image3 }],
+          // images: [{ url: image1 }, { url: image2 }, { url: image3 }],
         } = item;
         return {
           id,
@@ -201,9 +201,9 @@ class Products {
           handle,
           thumbnail,
           material,
-          image1,
-          image2,
-          image3,
+          // image1,
+          // image2,
+          // image3,
         };
       });
       return products;

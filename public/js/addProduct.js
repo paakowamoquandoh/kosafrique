@@ -253,33 +253,35 @@ class Products {
 class UI {
   loadAllproducts(products) {
     let itemResult = "";
-    products.forEach((product) => {
-      itemResult += `
-        <!-- single Product -->
-        <a class="itemCard" >
-         <div id="itemCard" data-id="${product.id}">
-         <img class="itemImage" src=${product.thumbnail} alt="">
-         <h5 class="cardTitle" title="African Print Dress">${product.title}</h5>
-         <p>African Made ${product.subtitle}</p>
-         <div class="itemPrice">
-             <h5>$${product.material}</h5>
-         </div>
-         </div>
-          <div class="colorTag">
-          <div class="stars">
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-        </div>
-              <button class="proCart" data-id="${product.id}">Buy</button>
+    if (products) {
+      products.forEach((product) => {
+        itemResult += `
+          <!-- single Product -->
+          <a class="itemCard" >
+           <div id="itemCard" data-id="${product.id}">
+           <img class="itemImage" src=${product.thumbnail} alt="">
+           <h5 class="cardTitle" title="African Print Dress">${product.title}</h5>
+           <p>African Made ${product.subtitle}</p>
+           <div class="itemPrice">
+               <h5>$${product.material}</h5>
+           </div>
+           </div>
+            <div class="colorTag">
+            <div class="stars">
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
           </div>
-        </a>
-        <!-- single product ends here -->
-        `;
-      productArea.innerHTML = itemResult;
-    });
+                <button class="proCart" data-id="${product.id}">Buy</button>
+            </div>
+          </a>
+          <!-- single product ends here -->
+          `;
+        productArea.innerHTML = itemResult;
+      });
+    }
 
     // add event listener to each product item
     const productCards = document.querySelectorAll("#itemCard");
@@ -670,5 +672,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(() => {
       ui.getAddToCartBtns();
       ui.cartLogic();
+    })
+    .catch((error) => {
+      console.error(error);
     });
 });

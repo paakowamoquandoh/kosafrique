@@ -335,10 +335,10 @@ class UI {
         <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">
-          <img src="../img/star.png" class="star" alt="">
-          <img src="../img/star.png" class="star" alt="">
-          <img src="../img/star.png" class="star" alt="">
-          <img src="../img/star.png" class="star" alt="">
+          <img src="./img/star.png" class="star" alt="">
+          <img src="./img/star.png" class="star" alt="">
+          <img src="./img/star.png" class="star" alt="">
+          <img src="./img/star.png" class="star" alt="">
           <img src="./img/star.png" class="star" alt="">
         </div>
         <p class="subHeading">Select Size</p>
@@ -396,9 +396,9 @@ class UI {
       star.addEventListener("click", () => {
         for (let i = 0; i < 5; i++) {
           if (i <= index) {
-            ratingsInput[i].src = `/img/star-filled.png`;
+            ratingsInput[i].src = `./img/star-filled.png`;
           } else {
-            ratingsInput[i].src = `/img/star.png`;
+            ratingsInput[i].src = `./img/star.png`;
           }
         }
       });

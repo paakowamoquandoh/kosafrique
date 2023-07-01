@@ -113,7 +113,7 @@ button.white {
 
 /* Cover section Styling */
 .swiper {
-  background-color: rgb(74, 122, 149);
+  background-color: rgba(74, 121, 149, 0.123);
 }
 .newMusicBox {
   font-family: "Poppins", sans-serif;

@@ -191,8 +191,25 @@ class Products {
           handle,
           thumbnail,
           material,
-          // images: [{ url: image1 }, { url: image2 }, { url: image3 }],
+          images
         } = item;
+        
+        let image1 = null;
+        let image2 = null;
+        let image3 = null;
+
+        if (Array.isArray(images) && images.length > 0) {
+          if (images[0].url) {
+            image1 = images[0].url;
+          }
+          if (images[1]?.url) {
+            image2 = images[1].url;
+          }
+          if (images[2]?.url) {
+            image3 = images[2].url;
+          }
+        }
+
         return {
           id,
           title,
@@ -201,9 +218,9 @@ class Products {
           handle,
           thumbnail,
           material,
-          // image1,
-          // image2,
-          // image3,
+          image1,
+          image2,
+          image3,
         };
       });
       return products;
@@ -264,6 +281,7 @@ class UI {
            <p>${product.subtitle}</p>
            <div class="itemPrice">
                <h5>$${product.material}</h5>
+               <h5 class="itemOther">Product</h5>
            </div>
            </div>
             <div class="colorTag">

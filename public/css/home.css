@@ -1155,8 +1155,18 @@ margin-top: -8px;
 }
 
 @media (max-device-width: 380px) {
+
+  .itemDescription1 {
+    text-transform: capitalize;
+    height: 35px;
+   width: 100%;
+   overflow: hidden;
+   white-space: wrap;
+   text-overflow: ellipsis;
+  }
+
   #modal .productInfo {
-    padding-top: 20rem;
+    padding-top: 14rem;
     padding-bottom: 1rem;
     width: 90vw;
     height: auto;

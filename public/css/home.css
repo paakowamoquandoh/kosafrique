@@ -388,7 +388,7 @@ button.white {
   box-shadow: 0px 2.6px 10px rgba(0, 0, 0, 0.322),
     0px 21px 80px rgba(0, 0, 0, 0.247);
   border-radius: 3px;
-  background-color: var(--alternate);
+  background-color: grey;
   display: grid;
   align-items: center;
   grid-template-columns: auto 1fr auto;
@@ -405,10 +405,15 @@ button.white {
 .cartItem h5 {
   margin: 0.5rem 0;
   letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #38f785;
 }
 
 .cartItem h4 {
   color: var(--dark-color);
+  font-size: 1.2rem;
+  text-transform: capitalize;
 }
 
 .showCart {
@@ -622,16 +627,16 @@ button.white {
   }
 
   .sizeRadioBtn {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 
-    line-height: 60px;
+    line-height: 50px;
 
     font-size: 15px;
   }
 
   .btn {
-    width: 45%;
+    width: 100%;
   }
 
   .headingOther {
@@ -640,7 +645,7 @@ button.white {
 
   .imageSlider {
     width: 50%;
-    height: 360px;
+    height: auto;
     background-position: center;
     margin: 1rem;
   }
@@ -816,7 +821,7 @@ button.white {
   }
 
   section .productsBox .mainProArea .itemCard {
-    width: 220px;
+    width: 200px;
     margin: 6px 0px;
     /* padding: 5px 10px; */
   }
@@ -1034,18 +1039,23 @@ button.white {
     padding-top: 4.8rem;
   }
 
+
+  .modal-container{
+    margin-top: 5rem;
+  }
+
   #modal .productInfo {
     width: 90vw;
     flex-wrap: wrap;
-    margin: 2rem 3px 1px 1px;
-    padding: 25px 10px;
+    margin: 8rem 3px 1px 1px;
+    padding: 125px 10px;
   }
 
   .sizeRadioBtn {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 
-    line-height: 40px;
+    line-height: 45px;
 
     font-size: 12px;
   }
@@ -1055,7 +1065,7 @@ button.white {
   }
 
   .btn {
-    width: 50%;
+    width: 100%;
   }
 
   .headingOther {
@@ -1095,7 +1105,7 @@ button.white {
 
   #close-modal-btn {
     position: absolute;
-    top: 80px;
+    top: 10px;
     right: 25px;
   }
 
@@ -1135,7 +1145,7 @@ button.white {
 
 @media (max-device-width: 380px) {
   #modal .productInfo {
-    padding-top: 2rem;
+    padding-top: 20rem;
     padding-bottom: 1rem;
     width: 90vw;
     height: auto;
@@ -1163,9 +1173,9 @@ button.white {
   }
 
   .imageSlider {
-    padding-top: 6rem;
+    padding-top: 28rem;
     margin-bottom: -30px;
-    height: 300px;
+    height: auto;
   }
 
   .itemPrice {
@@ -1186,7 +1196,7 @@ button.white {
   }
 
   .btn {
-    width: 45%;
+    width: 100%;
     padding: 10px;
     font-size: 15px;
   }

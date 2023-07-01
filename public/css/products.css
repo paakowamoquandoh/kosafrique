@@ -305,20 +305,19 @@ section .productsBox .mainProArea .itemCard .itemPrice h5 {
 }
 
 .itemDetails .itemDescription {
+  text-transform: capitalize;
   overflow-x: hidden;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 2rem; 
   height: auto;
-  margin: 15px 0 30px;
-  white-space: wrap;
-  text-overflow: ellipsis;
+  color: crimson;
 }
 
 .itemDescription1 {
   overflow-x: hidden;
-  font-size: 15px;
+  line-height: 20px;
+  font-size: 16px;
   height: auto;
-  color: red;
+ color: black;
 }
 
 .itemPrice {

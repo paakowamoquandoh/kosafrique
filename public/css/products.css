@@ -7,6 +7,15 @@
   background: #fff;
 }
 
+.colorTitle{
+  color: var(--main-color);
+}
+
+.itemOther{
+  color: var(--dark-color);
+  text-transform: capitalize;
+}
+
 section aside .productsBox {
   width: 78%;
   height: auto;
@@ -255,7 +264,7 @@ section .productsBox .mainProArea .itemCard .itemPrice h5 {
 
 .imageSlider {
   width: 55%;
-  height: 500px;
+  height: auto;
   position: relative;
   background-size: cover;
   object-fit: cover;

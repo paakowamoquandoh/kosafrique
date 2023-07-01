@@ -191,9 +191,18 @@ class Products {
           handle,
           thumbnail,
           material,
-          images
+          images,
+          variants
         } = item;
-        
+
+        let variantTitle = null;
+        if (Array.isArray(variants) && variants.length > 0) {
+          const variant = variants[0]; // Get the first variant from the array
+          if (Array.isArray(variant.options) && variant.options.length > 0) {
+            variantTitle = variant.options[0].value; // Access the value property of the first options object
+          }
+        }
+
         let image1 = null;
         let image2 = null;
         let image3 = null;
@@ -221,6 +230,7 @@ class Products {
           image1,
           image2,
           image3,
+          variantTitle
         };
       });
       return products;
@@ -281,7 +291,7 @@ class UI {
            <p>${product.subtitle}</p>
            <div class="itemPrice">
                <h5>$${product.material}</h5>
-               <h5 class="itemOther">Product</h5>
+               <p><b class="colorTitle">Color: </b> <span class="itemOther">${product.variantTitle}</span></p>
            </div>
            </div>
             <div class="colorTag">
@@ -329,9 +339,9 @@ class UI {
         </div>
       </div>
       <div class="itemDetails">
-        <h2 style="display: none;" class="productBrand">${product.title}</h2>
         <h4 class="itemDescription"><b>${product.subtitle}</b></h4>
         <p class="itemDescription1">${product.description}</p>
+        <p><b class="colorTitle">Color: </b> <span class="itemOther">${product.variantTitle}</span></p>
         <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">
@@ -554,17 +564,14 @@ class UI {
      <img src=${item.thumbnail} alt="">          
      <div>
       <h4>${item.title}</h4>
+      <p><b class="colorTitle">Color: </b> <span class="itemOther">${item.variantTitle}</span></p>
+      <div >
       <h5>$${item.material}</h5>
         <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
-        <div class="stars">
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-            </div>
+       
+        </div>
      </div>
-     <div>
+     <div >
       <ion-icon class="upBtn" name="caret-up-outline" data-id = ${item.id}></ion-icon>
       <p class="itemAmount">${item.amount}</p>
       <ion-icon class="downBtn" name="caret-down-outline" data-id = ${item.id}></ion-icon>

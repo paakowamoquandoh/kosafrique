@@ -55,6 +55,12 @@ h1 {
   color: #222;
 }
 
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 h2 {
   font-size: 46px;
   line-height: 64px;
@@ -399,21 +405,24 @@ button.white {
 
 .cartItem img {
   width: 90px;
-  height: 90px;
+  height: auto;
 }
 
 .cartItem h5 {
-  margin: 0.5rem 0;
-  letter-spacing: 1px;
+margin-top: -8px;
   font-weight: bold;
-  font-size: 1rem;
-  color: #38f785;
+  font-size: 1.2rem;
+  color: var(--secondary-color); 
 }
 
 .cartItem h4 {
   color: var(--dark-color);
   font-size: 1.2rem;
   text-transform: capitalize;
+  width: 45%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .showCart {
@@ -427,11 +436,12 @@ button.white {
 .itemAmount {
   text-align: center;
   margin: -5px 0;
-  color: var(--main-color);
+  color: var(--secondary-color);
 }
 
 .removeItem {
-  color: tomato;
+  color:var(--main-color);
+  margin-top: 8px;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -440,7 +450,7 @@ button.white {
 
 .upBtn,
 .downBtn {
-  color: var(--dark-color);
+  color: var(--main-color);
   cursor: pointer;
 }
 
@@ -504,8 +514,8 @@ button.white {
 
 @media screen and (min-width: 768px) {
   .cart {
-    width: 25vw;
-    min-width: 350px;
+    width: auto;
+    min-width: auto;
   }
 
   .checkCart .cart {
@@ -558,17 +568,18 @@ button.white {
   }
 
   .btn {
-    width: 45%;
+    width: 100%;
   }
   .sizeRadioBtn {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
     font-size: 13px;
   }
 
   section .productsBox .mainProArea .itemCard {
     width: 200px;
+    height: auto;
   }
 }
 @media (max-width: 1128px) {
@@ -577,13 +588,13 @@ button.white {
     width: 80vw;
   }
   .btn {
-    width: 45%;
+    width: 100%;
   }
   .sizeRadioBtn {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 13px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
   }
 }
 @media (max-width: 998px) {
@@ -592,13 +603,13 @@ button.white {
     width: 80vw;
   }
   .btn {
-    width: 45%;
+    width: 100%;
   }
   .sizeRadioBtn {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 13px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
   }
 }
 

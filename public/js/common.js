@@ -345,24 +345,21 @@ class UI {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("cartItem");
     itemDiv.innerHTML = `
-     <img src=${item.thumbnail} alt="">          
-     <div>
-      <h4>${item.title}</h4>
-      <h5>$${item.material}</h5>
-        <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
-        <div class="stars">
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-            </div>
-     </div>
-     <div>
-      <ion-icon class="upBtn" name="caret-up-outline" data-id = ${item.id}></ion-icon>
-      <p class="itemAmount">${item.amount}</p>
-      <ion-icon class="downBtn" name="caret-down-outline" data-id = ${item.id}></ion-icon>
-     </div>
+    <img src=${item.thumbnail} alt="">          
+    <div>
+     <h4>${item.title}</h4>
+     <p><b class="colorTitle">Color: </b> <span class="itemOther">${item.variantTitle}</span></p>
+     <div >
+     <h5>$${item.material}</h5>
+       <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
+      
+       </div>
+    </div>
+    <div >
+     <ion-icon class="upBtn" name="caret-up-outline" data-id = ${item.id}></ion-icon>
+     <p class="itemAmount">${item.amount}</p>
+     <ion-icon class="downBtn" name="caret-down-outline" data-id = ${item.id}></ion-icon>
+    </div>
      `;
     overlayCartContent.appendChild(itemDiv);
   }

@@ -8,5 +8,18 @@
   </head>
   <body>
     <img src="../login.html" alt="" />
+
+    <img src=${item.thumbnail} alt="">          
+     <div>
+      <h4>${item.title}</h4>
+      <p><b class="colorTitle"><span style="color:crimson;">${item.variantTitle}</span></p>
+      <h5>$${item.material}</h5>
+        <ion-icon class="removeItem" data-id = ${item.id} name="trash-outline"></ion-icon>
+     </div>
+     <div class="row">
+      <ion-icon class="upBtn" name="caret-up-outline" data-id = ${item.id}></ion-icon>
+      <p class="itemAmount">${item.amount}</p>
+      <ion-icon class="downBtn" name="caret-down-outline" data-id = ${item.id}></ion-icon>
+     </div>
   </body>
 </html>

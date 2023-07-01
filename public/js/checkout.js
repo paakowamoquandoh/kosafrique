@@ -1,9 +1,3 @@
-window.onload = () => {
-  if (!sessionStorage.user) {
-    location.replace("../login");
-  }
-};
-
 const placeOrder = document.querySelector("#placeOrderBtn");
 placeOrder.addEventListener("click", () => {
   let address = getAddress();

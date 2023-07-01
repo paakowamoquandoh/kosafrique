@@ -328,10 +328,10 @@ class UI {
           <img src=${product.image3} alt="">
         </div>
       </div>
-      <div class="ItemDetails">
+      <div class="itemDetails">
         <h2 style="display: none;" class="productBrand">${product.title}</h2>
         <h4 class="itemDescription"><b>${product.subtitle}</b></h4>
-        <p class="itemDescription">${product.description}</p>
+        <p class="itemDescription1">${product.description}</p>
         <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>
         <div class="rating">

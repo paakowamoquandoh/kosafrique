@@ -260,8 +260,8 @@ class UI {
           <a class="itemCard" >
            <div id="itemCard" data-id="${product.id}">
            <img class="itemImage" src=${product.thumbnail} alt="">
-           <h5 class="cardTitle" title="African Print Dress">${product.title}</h5>
-           <p>African Made ${product.subtitle}</p>
+           <h5 class="cardTitle" title="">${product.title}</h5>
+           <p>${product.subtitle}</p>
            <div class="itemPrice">
                <h5>$${product.material}</h5>
            </div>
@@ -312,7 +312,7 @@ class UI {
       </div>
       <div class="ItemDetails">
         <h2 style="display: none;" class="productBrand">${product.title}</h2>
-        <h4 class="itemDescription"><b>African Made ${product.subtitle}</b></h4>
+        <h4 class="itemDescription"><b>${product.subtitle}</b></h4>
         <p class="itemDescription">${product.description}</p>
         <span class="itemPrice">$${product.material}</span>
         <span class="itemDiscount">(50% Off)</span>

@@ -146,8 +146,8 @@ button.white {
   overflow: hidden;
   background: linear-gradient(
     8deg,
-    hsla(200, 17%, 14%, 0.897) 14%,
-    hsla(310, 17%, 14%, 0.733) 44%
+    hsla(200, 17%, 14%, 0.582) 14%,
+    hsla(310, 17%, 14%, 0.39) 44%
   );
 }
 
@@ -201,8 +201,8 @@ button.white {
   overflow: hidden;
   background: linear-gradient(
     8deg,
-    hsla(201, 22%, 29%, 0.596) 14%,
-    hsla(311, 17%, 43%, 0.685) 44%
+    hsla(201, 22%, 29%, 0.308) 14%,
+    hsla(311, 17%, 43%, 0.356) 44%
   );
 }
 
@@ -560,6 +560,10 @@ button.white {
     height: 50px;
     line-height: 50px;
     font-size: 13px;
+  }
+
+  section .productsBox .mainProArea .itemCard {
+    width: 200px;
   }
 }
 @media (max-width: 1128px) {
